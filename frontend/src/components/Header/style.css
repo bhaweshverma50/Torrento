@@ -1,0 +1,12 @@
+header{
+    /* background-color: var(--Dark); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+header h1{
+    /* color: var(--Red); */
+    text-transform: uppercase;
+}

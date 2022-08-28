@@ -1,28 +1,25 @@
-import {useEffect, useState} from 'react';
+import React from "react";
+import "./App.css";
+import 'antd/dist/antd.css';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Home from "./pages/Home";
 
 
-function App() {
-  const [torr, setTorr] = useState([])
-  async function getTrending(){
-    try{
-      let res = await fetch("https://torrento.vercel.app/trending")
-      res = await res.json()
-      setTorr(res.items)
-    } catch (err){
-      console.log(err);
-    }
-  }
-
-  useEffect(() => {
-    getTrending()
-  }, [])
-
+export default function App() {
   return (
-    <div className="App">
-      <h1>Trending</h1>
-      {torr.length > 0 ? torr.map((l) => <p>{l.name}</p>) : <p>Nothing to display for now!</p>}
-    </div>
+    <BrowserRouter>
+    <Routes>
+        <Route path="/" element={<Home />} />
+        {/* <Route path="teams" element={<Teams />}> */}
+          {/* <Route path=":teamId" element={<Team />} /> */}
+          {/* <Route path="new" element={<NewTeamForm />} /> */}
+          {/* <Route index element={<LeagueStandings />} /> */}
+        {/* </Route> */}
+    </Routes>
+  </BrowserRouter>
   );
 }
-
-export default App;

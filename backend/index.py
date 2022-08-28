@@ -5,6 +5,11 @@ from py1337x import py1337x
 app = Flask(__name__, static_url_path='', static_folder='build')
 CORS(app)
 
+
+def str2bool(v):
+    return v.lower() in ("true", "1")
+
+
 @app.route('/', defaults={'path': ''})
 def dashboard(path):
     print("Dashboard...")
@@ -29,10 +34,21 @@ def search_query(query):
 
 
 @app.route('/trending')
-def trending():
+def trending_movies_week():
     try:
         torrents = py1337x()
         list = torrents.trending()
+        return list
+    except Exception as e:
+        print(e)
+        return 'Oops! No way to torrento :('
+
+
+@app.route('/trending/<category>/<week>')
+def trending_movies_tv(category, week):
+    try:
+        torrents = py1337x()
+        list = torrents.trending(category, week=str2bool(week))
         return list
     except Exception as e:
         print(e)
@@ -44,6 +60,39 @@ def top():
     try:
         torrents = py1337x()
         list = torrents.top()
+        return list
+    except Exception as e:
+        print(e)
+        return 'Oops! No way to torrento :('
+
+
+@app.route('/top/<category>')
+def top_movies_tv(category):
+    try:
+        torrents = py1337x()
+        list = torrents.top(category)
+        return list
+    except Exception as e:
+        print(e)
+        return 'Oops! No way to torrento :('
+
+
+@app.route('/popular/<category>/<week>')
+def popular_movies_tv(category, week):
+    try:
+        torrents = py1337x()
+        list = torrents.popular(category, week=str2bool(week))
+        return list
+    except Exception as e:
+        print(e)
+        return 'Oops! No way to torrento :('
+
+
+@app.route('/info/<id>')
+def info(id):
+    try:
+        torrents = py1337x()
+        list = torrents.info(torrentId=id)
         return list
     except Exception as e:
         print(e)

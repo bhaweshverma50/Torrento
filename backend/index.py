@@ -1,13 +1,14 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_cors import CORS
 from py1337x import py1337x
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder='build')
 CORS(app)
 
-@app.route('/')
-def hello_world():
-    return '<div><h1>Welcome to Torrento</h1><p>Site under progress...coming soon!</p></div>'
+@app.route('/', defaults={'path': ''})
+def dashboard(path):
+    print("Dashboard...")
+    return send_from_directory(app.static_folder, 'index.html')
 
 
 @app.route('/search')

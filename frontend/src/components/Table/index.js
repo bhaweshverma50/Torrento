@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import "./style.css"
-import {Pagination, Table as List} from "antd";
+import {Table as List} from "antd";
 
 function Table({heading, torr, getTrending}) {
     
@@ -12,13 +12,15 @@ function Table({heading, torr, getTrending}) {
         {
             "title": "Name",
             "dataIndex": "name",
-            "render": (text, record) => <p className='truncate text-xs md:text-sm'>{record.name}</p>
+            "key": "torrentId",
+            "render": (text, record) => <p key={record.torrentId} className='truncate text-xs md:text-sm'>{record.name}</p>
         },
         {
             "title": "Size",
             "dataIndex": "size",
             "width": "120px",
-            "render": (text, record) => <p className='truncate text-xs md:text-sm'>{record.size}</p>
+            "key": "torrentId",
+            "render": (text, record) => <p key={record.torrentId} className='truncate text-xs md:text-sm'>{record.size}</p>
         }
     ]
 

@@ -3,17 +3,17 @@
     "short_name": "Torrento",
     "icons": [
         {
-            "src": "/Logo92.png",
+            "src": "img/logo.png",
             "sizes": "92x92",
             "type": "image/png"
         },
         {
-            "src": "/Logo144.png",
+            "src": "/img/logo.png",
             "sizes": "144x144",
             "type": "image/png"
         },
         {
-            "src": "/Logo152.png",
+            "src": "img/logo.png",
             "sizes": "152x152",
             "type": "image/png"
         }        
@@ -21,6 +21,6 @@
     "start_url": "/",
     "display": "standalone",
     "orientation": "portrait",
-    "background_color": "#0E1041",
-    "theme_color": "#0E1041"
+    "background_color": "#1D3557",
+    "theme_color": "#E63946"
 }

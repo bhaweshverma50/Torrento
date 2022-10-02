@@ -50,7 +50,7 @@ def search_query(query):
 def trending_movies_week():
     try:
         torrents = py1337x()
-        list = torrents.trending()
+        list = torrents.trending(week=True)
         addKey(list)
         return list
     except Exception as e:
